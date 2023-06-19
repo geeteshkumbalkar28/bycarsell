@@ -36,7 +36,7 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Userprofile profile;
 
-    @OneToOne(mappedBy = "userUser")
+    @OneToOne(mappedBy = "userUser",cascade = CascadeType.ALL)
     private Dealer dealers;
 
     @ManyToMany

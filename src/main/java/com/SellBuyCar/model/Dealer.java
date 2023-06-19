@@ -21,7 +21,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "dealer")
+@Table(name = "Dealer_Profile")
 public class Dealer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,9 +55,7 @@ public class Dealer {
     private String email;
 
     @OneToOne
-
-
-    @JoinColumn(name = "user_user_id")
+    @JoinColumn(name = "User_Id")
     private User userUser;
 
     @ManyToOne(fetch = FetchType.LAZY)

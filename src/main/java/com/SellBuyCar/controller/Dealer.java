@@ -21,4 +21,5 @@ public class Dealer {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body("Dealer has been Added");
 
     }
+    @get
 }

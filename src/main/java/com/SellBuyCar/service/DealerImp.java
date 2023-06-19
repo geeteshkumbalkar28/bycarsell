@@ -30,12 +30,20 @@ public class DealerImp implements IDealer {
 
         byte encrypt[]= Base64.getEncoder().encode(dealerDto.password.getBytes());
         String encryptPassword=new String(encrypt);
+
         user.setPassword(encryptPassword);
         user.setEmail(dealerDto.email);
         user.setMobileNo(dealerDto.mobileNo);
+
         Dealer dealerData=new Dealer(dealerDto);
+
+        dealerData.setUserUser(user);
         user.setDealers(dealerData);
+
+        System.out.println(user.toString());
+        System.out.println(dealerData.toString());
         userRepo.save(user);
+        dealerRepo.save(dealerData);
         return "Dealer Added";
     }
 }
