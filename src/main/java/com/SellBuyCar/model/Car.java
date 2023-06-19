@@ -1,12 +1,14 @@
 package com.SellBuyCar.model;
 
+import com.SellBuyCar.dto.CarDto;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -90,14 +92,37 @@ public class Car {
     @JoinColumn(name = "dealer_vendor_id", nullable = false)
     private Dealer dealerVendor;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "carphoto_car_photo_id", nullable = false)
-    private Carphoto carphotoCarPhoto;
 
+//    private Carphoto carphotoCarPhoto;
     @OneToMany(mappedBy = "carCar")
     private Set<Bidding> biddings = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "carCar")
     private Set<PendingBooking> pendingBookings = new LinkedHashSet<>();
 
+    public Car(CarDto carDto){
+        this.acFeature = carDto.getAcFeature();
+        this.musicFeature =carDto.getMusicFeature();
+        this.area =carDto.getArea();
+        this.bodyType = carDto.getBodyType();
+        this.brand = carDto.getBrand();
+        this.carInsurance = carDto.getCarInsurance();
+        this.carStatus = carDto.getCarStatus();
+        this.city = carDto.getCity();
+        this.color = carDto.getColor();
+        this.description =carDto.getDescription();
+        this.fuelType = carDto.getFuelType();
+        this.kmDriven = carDto.getKmDriven();
+        this.model = carDto.getModel();
+        this.noOfWheels = carDto.getNoOfWheels();
+        this.ownerSerial = carDto.getOwnerSerial();
+        this.powerWindowFeature = carDto.getPowerWindowFeature();
+        this.price =carDto.getPrice();
+        this.rearParkingCameraFeature = carDto.getRearParkingCameraFeature();
+        this.registration = carDto.getRegistration();
+        this.safetyDescription = carDto.getSafetyDescription();
+        this.transmission = carDto.getTransmission();
+        this.tyre = carDto.getTyre();
+        this.year = carDto.getYear();
+    }
 }

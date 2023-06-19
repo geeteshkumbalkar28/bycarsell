@@ -23,7 +23,7 @@ public class Carphoto {
     private int id;
 
     @Column(name = "car_photo", length = 250)
-    private String carPhoto;
+    private String carPhoto3;
 
     @Column(name = "car_photo4", length = 250)
     private String carPhoto4;
@@ -52,7 +52,9 @@ public class Carphoto {
     @Column(name = "odometer", nullable = false, length = 250)
     private String odometer;
 
-    @OneToMany(mappedBy = "carphotoCarPhoto")
-    private Set<Car> cars = new LinkedHashSet<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Car_Car_Id")
+    private Car car;
+
 
 }

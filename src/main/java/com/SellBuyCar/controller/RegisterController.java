@@ -15,6 +15,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class RegisterController {
     @Autowired
     private IRegister iRegister;
+
+    /////////////////////////////////////////////////////////////////////
+    //
+    //  Function Name :  userRegisteration
+    //  Description   :  Used to Registeration The User And It's Profile
+    //  Input         :  RegisterDto
+    //  Output        :  ResponseEntity
+    //  Date 		  :  16/06/2023
+    //  Author 		  :  Geetesh Gajanan Kumbalkar
+    //
+    /////////////////////////////////////////////////////////////////////
     @PostMapping("/userregister")
     public ResponseEntity<?> userRegisteration(@RequestBody RegisterDto registerDto){
 //        System.out.println("11");

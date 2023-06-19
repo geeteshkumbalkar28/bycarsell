@@ -47,8 +47,8 @@ public class Dealer {
     @Column(name = "Email",nullable = false)
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_user_id", nullable = false)
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_user_id")
     private User userUser;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

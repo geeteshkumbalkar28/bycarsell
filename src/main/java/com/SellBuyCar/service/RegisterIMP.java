@@ -17,6 +17,17 @@ public class RegisterIMP implements IRegister {
     private UserprofileRepo userprofileRepo;
     @Autowired
     private UserRepo userRepo;
+
+    /////////////////////////////////////////////////////////////////////
+    //
+    //  Function Name :  registeration
+    //  Description   :  Used to Registeration The User And It's Profile
+    //  Input         :  RegisterDto
+    //  Output        :  String
+    //  Date 		  :  16/06/2023
+    //  Author 		  :  Geetesh Gajanan Kumbalkar
+    //
+    /////////////////////////////////////////////////////////////////////
     @Override
     public String registeration(RegisterDto registerDto) {
         List<Userprofile> list = userprofileRepo.findAll();
