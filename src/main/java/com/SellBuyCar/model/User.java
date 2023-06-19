@@ -1,15 +1,14 @@
 package com.SellBuyCar.model;
 
 import com.SellBuyCar.dto.RegisterDto;
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -37,8 +36,8 @@ public class User {
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Userprofile profile;
 
-    @OneToMany(mappedBy = "userUser")
-    private Set<Dealer> dealers;
+    @OneToOne(mappedBy = "userUser")
+    private Dealer dealers;
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),

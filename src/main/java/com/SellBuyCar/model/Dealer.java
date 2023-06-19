@@ -1,10 +1,16 @@
 package com.SellBuyCar.model;
 
-import jakarta.persistence.*;
+
+import com.SellBuyCar.dto.DealerDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import javax.persistence.*;
+
+import java.util.Set;
+import lombok.*;
 
 import java.util.LinkedHashSet;
 import java.util.Set;
@@ -14,6 +20,7 @@ import java.util.Set;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Table(name = "dealer")
 public class Dealer {
     @Id
@@ -47,12 +54,14 @@ public class Dealer {
     @Column(name = "Email",nullable = false)
     private String email;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
+
+
     @JoinColumn(name = "user_user_id")
     private User userUser;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "bidding_bidding_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "bidding_bidding_id")
     private Bidding biddingBidding;
 
     @OneToMany(mappedBy = "dealerVendor")
@@ -61,4 +70,15 @@ public class Dealer {
     @OneToMany(mappedBy = "dealerVendor")
     private Set<Car> cars = new LinkedHashSet<>();
 
+    public Dealer(DealerDto dealerDto) {
+        this.address = dealerDto.address;
+        this.adharShopact = dealerDto.adharShopact;
+        this.area = dealerDto.area;
+        this.city =dealerDto.city;
+        this.fristname = dealerDto.fristname;
+        this.lastName = dealerDto.lastName;
+        this.mobileNo = dealerDto.mobileNo;
+        this.shopName = dealerDto.shopName;
+        this.email = dealerDto.email;
+    }
 }

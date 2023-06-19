@@ -8,8 +8,17 @@ public class SellBuyCarApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SellBuyCarApplication.class, args);
-		System.out.println("\n\n\n\n\n");
-		System.err.println("************************************APPLICATION STARTED***********************************************");
+		System.out.println("\n\n");
+
+				System.err.println("  *****    *******  *******       *****   *******    *****    ******   *******");
+				System.err.println(" *     *   *      *    *         *           *      *     *   *     *     *   ");
+				System.err.println("*       *  *      *    *         *           *     *       *  *     *     *   ");
+				System.err.println("*       *  *******     *          *****      *     *       *  ******      *   ");
+				System.err.println("*********  *           *               *     *     *********  *   *       *   ");
+				System.err.println("*       *  *           *               *     *     *       *  *    *      *   ");
+				System.err.println("*       *  *        *******       *****      *     *       *  *     *     *   ");
+
+
 	}
 
 

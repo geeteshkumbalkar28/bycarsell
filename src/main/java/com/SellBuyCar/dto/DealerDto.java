@@ -2,27 +2,30 @@ package com.SellBuyCar.dto;
 
 import com.SellBuyCar.model.Bidding;
 import com.SellBuyCar.model.User;
-import jakarta.persistence.*;
+//import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class DealerDto {
-    private String address;
+    public String address;
 
-    private String adharShopact;
+    public String adharShopact;
 
-    private String area;
+    public String area;
 
-    private String city;
+    public String city;
 
-    private String fristname;
+    public String fristname;
 
-    private String lastName;
+    public String lastName;
 
-    private String mobileNo;
+    public String mobileNo;
 
-    private String shopName;
-    private String email;
+    public String shopName;
+    public String email;
+    public String password;
 
-    private User userUser;
 
-    private Bidding biddingBidding;
 }
