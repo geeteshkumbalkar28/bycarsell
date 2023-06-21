@@ -101,7 +101,7 @@ public class Car {
     private Dealer dealerVendor;
 
 
-    private Carphoto carphotoCarPhoto;
+//    private Carphoto carphotoCarPhoto;
     @OneToMany(mappedBy = "carCar")
     private Set<Bidding> biddings = new LinkedHashSet<>();
 

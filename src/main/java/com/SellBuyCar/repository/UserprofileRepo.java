@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserprofileRepo extends JpaRepository<Userprofile,Integer> {
 
+   // void deleteById(int id);
 }
