@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 
 @Service
@@ -33,14 +34,14 @@ public class DealerImp implements IDealer {
     /////////////////////////////////////////////////////////////////////
     @Override
     public String adDealer(DealerDto dealerDto) {
-        System.out.println("3");
+//        System.out.println("3");
 //        Dealer dealer = dealerRepo.findByEmail(dealerDto.email);
-        System.out.println("55");
+//        System.out.println("55");
 //        if(dealer!=null){
 //            return "Email is all ready Exist";
 //        }
         User user=new User();
-        System.out.println("4");
+//        System.out.println("4");
 
         byte encrypt[]= Base64.getEncoder().encode(dealerDto.password.getBytes());
         String encryptPassword=new String(encrypt);
@@ -60,6 +61,16 @@ public class DealerImp implements IDealer {
         dealerRepo.save(dealerData);
         return "Dealer Added";
     }
+    /////////////////////////////////////////////////////////////////////
+    //
+    //  Method Name    :  getDealers
+    //  Description   :  Used to Get The all Dealers with pagewise
+    //  Input         :  int
+    //  Output        :  List<ResponseDealerDto>
+    //  Date 		  :  21/06/2023
+    //  Author 		  :  Geetesh Gajanan Kumbalkar
+    //
+    /////////////////////////////////////////////////////////////////////
 
     @Override
     public List<ResponseDealerDto> getDealers(int pageNo) {
@@ -89,13 +100,16 @@ public class DealerImp implements IDealer {
         return listOfDealerDto;
 
     }
-    public String address;
-
-    public String adharShopact;
-
-    public String area;
-
-    public String city;
+    /////////////////////////////////////////////////////////////////
+    //
+    //  Method Name   :  editDealer
+    //  Description   :  Used to edit The Dealer details
+    //  Input         :  DealerDto,int
+    //  Output        :  String
+    //  Date 		  :  21/06/2023
+    //  Author 		  :  Geetesh Gajanan Kumbalkar
+    //
+    /////////////////////////////////////////////////////////////////////
 
     @Override
     public String editDealer(DealerDto dealerDto,int id) {
@@ -121,17 +135,29 @@ public class DealerImp implements IDealer {
         }
         return "invalid id";
     }
+    /////////////////////////////////////////////////////////////////////
+    //
+    //  Method Name   :  removeDealers
+    //  Description   :  Used to remove The Dealer details
+    //  Input         :  int
+    //  Output        :  String
+    //  Date 		  :  21/06/2023
+    //  Author 		  :  Geetesh Gajanan Kumbalkar
+    //
+    /////////////////////////////////////////////////////////////////////
 
     @Override
+    @Transactional
     public String removeDealers(int id) {
         Optional<Dealer> dealer = dealerRepo.findById(id);
         if(dealer.isPresent()){
             try {
                 dealerRepo.DeleteById(id);
+                return "dealer Delete Succesfully :"+ id;
             }catch (Exception e){
-                System.out.println(e);
+                System.err.println(e);
             }
-            return "dealer Delete Succesfully :"+ id;
+
         }
         return "id invalid";
     }

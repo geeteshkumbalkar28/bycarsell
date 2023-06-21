@@ -10,7 +10,10 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DealerRepo extends JpaRepository<Dealer,Integer>{
     public Dealer findByEmail(String email);
-    @Query(value = "delete from buysellcar.dealer_profile where dealer_id=:dealer_id",nativeQuery = true)
+    @Modifying
+    @Query(value = "DELETE FROM buysellcar.dealer_profile WHERE dealer_id=:dealer_id", nativeQuery = true)
     public void DeleteById(int dealer_id);
+
+//    public Dealer FindByID(int id);
 
 }

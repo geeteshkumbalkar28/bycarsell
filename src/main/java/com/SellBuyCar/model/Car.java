@@ -97,8 +97,8 @@ public class Car {
     private int year;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "dealer_vendor_id", nullable = false)
-    private Dealer dealerVendor;
+    @JoinColumn(name = "dealer_id", nullable = false)
+    private Dealer dealer;
 
 
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)

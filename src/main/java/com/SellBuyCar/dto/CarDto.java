@@ -55,6 +55,8 @@ public class CarDto {
 
     private int year;
 
+    private  int dealer_id;
+
 //    private Dealer dealerVendor;
 //
 //    private Carphoto carphotoCarPhoto;

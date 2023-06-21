@@ -9,10 +9,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-import java.util.Set;
+import java.util.*;
+
 import lombok.*;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 @Getter
@@ -65,8 +65,8 @@ public class Dealer {
     @OneToMany(mappedBy = "dealerVendor")
     private Set<Biddingbuy> biddingbuys = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "dealerVendor")
-    private Set<Car> cars = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "dealer")
+    private List<Car> cars = new LinkedList<>();
 
     public Dealer(DealerDto dealerDto) {
         this.address = dealerDto.address;
