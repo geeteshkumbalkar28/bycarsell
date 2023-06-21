@@ -83,7 +83,7 @@ public class DealerImp implements IDealer {
                  break;
             }
         }
-                   ResponseDealerDto responseDealerDto = new ResponseDealerDto(listOfDealer.get(1));
+//                   ResponseDealerDto responseDealerDto = new ResponseDealerDto(listOfDealer.get(1));
 
         System.out.println(listOfDealerDto);
         return listOfDealerDto;
@@ -108,7 +108,9 @@ public class DealerImp implements IDealer {
             dealer.get().setMobileNo(dealerDto.mobileNo);
             dealer.get().setEmail(dealerDto.email);
             dealer.get().getUserUser().setMobileNo(dealerDto.mobileNo);
-            dealer.get().getUserUser().setPassword(dealerDto.password);
+            byte encrypt[]= Base64.getEncoder().encode(dealerDto.password.getBytes());
+            String encryptPassword=new String(encrypt);
+            dealer.get().getUserUser().setPassword(encryptPassword);
 
             dealer.get().getUserUser().setEmail(dealerDto.email);
             dealer.get().setArea(dealerDto.area);
@@ -124,7 +126,11 @@ public class DealerImp implements IDealer {
     public String removeDealers(int id) {
         Optional<Dealer> dealer = dealerRepo.findById(id);
         if(dealer.isPresent()){
-            dealerRepo.delete(dealer.get());
+            try {
+                dealerRepo.DeleteById(id);
+            }catch (Exception e){
+                System.out.println(e);
+            }
             return "dealer Delete Succesfully :"+ id;
         }
         return "id invalid";

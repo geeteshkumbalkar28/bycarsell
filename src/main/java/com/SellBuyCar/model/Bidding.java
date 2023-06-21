@@ -42,7 +42,6 @@ public class Bidding {
     @OneToMany(mappedBy = "biddingBidding")
     private Set<Biddingbuy> biddingbuys = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "biddingBidding")
-    private Set<Dealer> dealers = new LinkedHashSet<>();
+
 
 }

@@ -101,8 +101,11 @@ public class Car {
     private Dealer dealerVendor;
 
 
-//    private Carphoto carphotoCarPhoto;
-    @OneToMany(mappedBy = "carCar")
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Carphoto> carphotos = new LinkedHashSet<>();
+    @ManyToMany
+    @JoinTable(name = "dealer_bidding", joinColumns = @JoinColumn(name = "dealer_id"),
+    inverseJoinColumns = @JoinColumn(name = "bidding_id"))
     private Set<Bidding> biddings = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "carCar")
