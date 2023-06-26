@@ -3,7 +3,10 @@ package com.SellBuyCar.service;
 import com.SellBuyCar.Interface.IUser;
 import com.SellBuyCar.dto.ResponseUserProfileDto;
 import com.SellBuyCar.dto.UserProfileDto;
+import com.SellBuyCar.exception.PasswordException;
+import com.SellBuyCar.model.User;
 import com.SellBuyCar.model.Userprofile;
+import com.SellBuyCar.repository.UserRepo;
 import com.SellBuyCar.repository.UserprofileRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,9 @@ public class UserProfileImpl implements IUser {
 
     @Autowired
     private UserprofileRepo userprofileRepo;
+
+    @Autowired
+    private UserRepo userRepo;
 
     @Override
     public List<ResponseUserProfileDto> getAllUsers(int pageNo) {
@@ -49,6 +55,26 @@ public class UserProfileImpl implements IUser {
     }
 
     @Override
+    public void changePassword(int id,String password) {
+
+       User user= userRepo.findById(id);
+        if (user != null){
+
+            if(user.getPassword().matches(password)){
+
+                throw new PasswordException("Can't user old password");
+
+            }
+            byte encrypt[]= Base64.getEncoder().encode(password.getBytes());
+            String encryptPassword=new String(encrypt);
+            user.setPassword(encryptPassword);
+
+            userRepo.save(user);
+        }
+
+    }
+
+    @Override
     public String editUser(UserProfileDto userProfileDto, int id) {
 
         Optional<Userprofile> user = userprofileRepo.findById(id);
@@ -57,9 +83,9 @@ public class UserProfileImpl implements IUser {
             user.get().setLastName(userProfileDto.getLastName());
             user.get().setAddress(userProfileDto.getAddress());
             user.get().getUser().setMobileNo(userProfileDto.getMobile_no());
-            byte encrypt[]= Base64.getEncoder().encode(userProfileDto.password.getBytes());
+           /* byte encrypt[]= Base64.getEncoder().encode(userProfileDto.password.getBytes());
             String encryptPassword=new String(encrypt);
-            user.get().getUser().setPassword(encryptPassword);
+            user.get().getUser().setPassword(encryptPassword);*/
 
             user.get().getUser().setEmail(userProfileDto.getEmail());
             user.get().setCity(userProfileDto.getCity());

@@ -17,11 +17,6 @@ public class SellBuyCarApplication {
 				System.err.println("*********  *           *               *     *     *********  *   *       *   ");
 				System.err.println("*       *  *           *               *     *     *       *  *    *      *   ");
 				System.err.println("*       *  *        *******       *****      *     *       *  *     *     *   ");
-//				for(int counter=0;counter<5;counter++){
-//					for(int jCounter=0;jCounter<5;jCounter++){
-//						if ()
-//					}
-//				}
 
 
 	}

@@ -18,5 +18,6 @@ public interface IUser {
 
     List<ResponseUserProfileDto> getAllUsers(int pageNo);
 
+    void changePassword(int id,String password);
 }
 
